@@ -14,6 +14,10 @@ public class MyArrayList<T> implements List<T> {
         return size;
     }
 
+    public int getCurrentCapacity(){
+        return currentCapacity;
+    }
+
     @Override
     public boolean isEmpty() {
         return (size == 0);
@@ -196,9 +200,9 @@ public class MyArrayList<T> implements List<T> {
 
     private void extend() {
         if (currentCapacity == size) {
-            currentCapacity += DEFAULT_CAPACITY_STEP;
-            Object[] newArray = new Object[currentCapacity];
+            Object[] newArray = new Object[currentCapacity + DEFAULT_CAPACITY_STEP];
             System.arraycopy(array, 0, newArray, 0, currentCapacity);
+            currentCapacity += DEFAULT_CAPACITY_STEP;
             array = newArray;
         }
     }

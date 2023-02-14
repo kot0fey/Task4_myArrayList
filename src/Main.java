@@ -63,5 +63,17 @@ public class Main {
         a.clear();
         System.out.print("clear():\n\t");
         a.print();
+
+        System.out.print("\nChanging capacity:\n\t");
+        System.out.print("Current capacity: " + a.getCurrentCapacity() + "\n\t");
+        System.out.print("Adding 100 elements to MyArrayList\n\t\t");
+        for(int i = 0; i< 100; i++){
+            a.add(i);
+        }
+        System.out.print("Current capacity: " + a.getCurrentCapacity() + "\n\t");
+        System.out.print("clear()\n\t\t");
+        a.clear();
+        System.out.print("Current capacity: " + a.getCurrentCapacity());
+
     }
 }
