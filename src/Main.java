@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        List<Integer> a = new MyArrayList<>();
+        MyArrayList<Integer> a = new MyArrayList<>();
         System.out.println("isEmpty(): " + a.isEmpty());
         System.out.print("Adding elements: 7, 34, 13\n\t");
         a.add(7);
@@ -13,7 +13,7 @@ public class Main {
         System.out.println("contains(34): " + a.contains(34));
         System.out.println("contains(3): " + a.contains(3));
 
-        List<Integer> checkingList = new MyArrayList<>();
+        MyArrayList<Integer> checkingList = new MyArrayList<>();
         checkingList.add(34);
         checkingList.add(7);
         System.out.println("containsAll(List = {34, 7}): " + a.containsAll(checkingList));
@@ -36,7 +36,7 @@ public class Main {
         a.add(9);
         System.out.print("\naddAll(List = {34, 7, 88, 12, 9}):\n\t");
         a.print();
-        List<Integer> deletingList = new MyArrayList<>();
+        MyArrayList<Integer> deletingList = new MyArrayList<>();
         deletingList.add(88);
         deletingList.add(7);
         a.removeAll(deletingList);
@@ -59,13 +59,9 @@ public class Main {
         }
         System.out.println(array[array.length - 1]);
 
-        System.out.println("iterator(): ");
-        for (int i = 0; i < a.size() * 2; i++) {
-            System.out.println("\t" + i + ") " + a.iterator());
-        }
 
         a.clear();
-        System.out.println("clear():\t");
+        System.out.print("clear():\n\t");
         a.print();
     }
 }
