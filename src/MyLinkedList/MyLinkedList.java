@@ -12,7 +12,7 @@ public class MyLinkedList<T> implements List<T> {
     Node<T> last;
 
     public void addFirst(T data) {
-        Node<T> element = new Node<T>(data);
+        Node<T> element = new Node<>(data);
         element.next = first;
         first = element;
         if (size == 0) {
@@ -22,7 +22,7 @@ public class MyLinkedList<T> implements List<T> {
     }
 
     public void addLast(T data) {
-        Node<T> element = new Node<T>(data);
+        Node<T> element = new Node<>(data);
         last.next = element;
         last = element;
         if (size == 0) {
@@ -56,7 +56,6 @@ public class MyLinkedList<T> implements List<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
-            private int index = 0;
             Node<T> currentElement = first;
 
             @Override
@@ -101,7 +100,6 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public boolean remove(Object o) {
-        Node<T> checkingElement = first;
         int index = indexOf(o);
         boolean removeFlag = index > -1;
 
@@ -230,8 +228,8 @@ public class MyLinkedList<T> implements List<T> {
     public int indexOf(Object o) {
         int index = 0;
         Node<T> element = first;
-        while (element.next!=null){
-            if(element.data ==o){
+        while (element.next != null) {
+            if (element.data == o) {
                 return index;
             }
             element = element.next;
