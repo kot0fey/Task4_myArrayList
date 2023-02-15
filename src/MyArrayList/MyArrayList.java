@@ -1,3 +1,5 @@
+package MyArrayList;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +16,7 @@ public class MyArrayList<T> implements List<T> {
         return size;
     }
 
-    public int getCurrentCapacity(){
+    public int getCurrentCapacity() {
         return currentCapacity;
     }
 
@@ -37,14 +39,17 @@ public class MyArrayList<T> implements List<T> {
     public Iterator<T> iterator() {
         return new Iterator<>() {
             private int index = 0;
+
             @Override
             public boolean hasNext() {
                 return index < size && array[index] != null;
             }
+
             @Override
             public T next() {
                 return (T) array[index++];
             }
+
             @Override
             public void remove() {
                 throw new UnsupportedOperationException();
@@ -229,7 +234,7 @@ public class MyArrayList<T> implements List<T> {
     }
 
     public void print() {
-        System.out.print("MyArrayList contains: {");
+        System.out.print("MyArrayList.MyArrayList contains: {");
         if (size != 0) {
             for (int i = 0; i < size - 1; i++) {
                 System.out.print(array[i] + ", ");
