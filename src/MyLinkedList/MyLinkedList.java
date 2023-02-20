@@ -22,12 +22,13 @@ public class MyLinkedList<T> implements List<T> {
     }
 
     public void addLast(T data) {
+        if (size == 0) {
+            addFirst(data);
+            return;
+        }
         Node<T> element = new Node<>(data);
         last.next = element;
         last = element;
-        if (size == 0) {
-            first = element;
-        }
         size++;
     }
 
@@ -45,7 +46,7 @@ public class MyLinkedList<T> implements List<T> {
     public boolean contains(Object o) {
         Node<T> checkingElement = first;
         for (int i = 0; i < size; i++) {
-            if (checkingElement == o) {
+            if (checkingElement.data == o) {
                 return true;
             }
             checkingElement = checkingElement.next;
@@ -60,13 +61,14 @@ public class MyLinkedList<T> implements List<T> {
 
             @Override
             public boolean hasNext() {
-                return currentElement.next != null;
+                return currentElement != null;
             }
 
             @Override
             public T next() {
+                T data = currentElement.data;
                 currentElement = currentElement.next;
-                return (T) currentElement;
+                return data;
             }
 
             @Override
@@ -81,7 +83,7 @@ public class MyLinkedList<T> implements List<T> {
         Object[] array = new Object[size];
         Node<T> currentElement = first;
         for (int i = 0; i < size; i++) {
-            array[i] = currentElement;
+            array[i] = currentElement.data;
             currentElement = currentElement.next;
         }
         return array;
@@ -148,8 +150,9 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public void clear() {
-        first = null;
-        last = null;
+        for (int i = 0; i < size + 1; i++) {
+            remove(0);
+        }
     }
 
     @Override
@@ -173,7 +176,6 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
-        addFirst(element);
         if (index == 0 || index > size) {
             addFirst(element);
             return;
@@ -210,16 +212,21 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        Node<T> checkingElement = first;
-        for (int i = 0; i < index - 1; i++) {
-            checkingElement = checkingElement.next;
-        }
-        T returnStatement = checkingElement.next.data;
-        if (checkingElement.next != null) {
+        T returnStatement;
+
+        if (index != 0) {
+            Node<T> checkingElement = first;
+            for (int i = 0; i < index - 1; i++) {
+                checkingElement = checkingElement.next;
+            }
+            returnStatement = checkingElement.next.data;
             checkingElement.next = checkingElement.next.next;
         } else {
-            checkingElement.next = null;
+            returnStatement = first.data;
+            first = first.next;
         }
+
+
         size--;
         return returnStatement;
     }
@@ -228,7 +235,7 @@ public class MyLinkedList<T> implements List<T> {
     public int indexOf(Object o) {
         int index = 0;
         Node<T> element = first;
-        while (element.next != null) {
+        while (element != null) {
             if (element.data == o) {
                 return index;
             }
@@ -256,5 +263,14 @@ public class MyLinkedList<T> implements List<T> {
     @Override
     public List<T> subList(int fromIndex, int toIndex) {///////////////////////////////////////////////
         return null;
+    }
+
+    public void print() {
+        System.out.println("MyLinkedList contains:");
+        Node<T> element = first;
+        for (int i = 0; i < size; i++) {
+            System.out.println("\t" + i + ") " + element.data);
+            element = element.next;
+        }
     }
 }
