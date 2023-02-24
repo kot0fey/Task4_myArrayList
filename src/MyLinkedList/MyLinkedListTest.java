@@ -4,10 +4,10 @@ public class MyLinkedListTest {
     public static void start() {
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
 
-        System.out.println("Adding elements:\nlist.add(1);\nlist.addFirst(2);\nlist.addLast(3);\n");
+        System.out.println("Adding elements:\nlist.add(1);\nlist.add(2);\nlist.add(3);\n");
         list.add(1);
-        list.addFirst(2);
-        list.addLast(3);
+        list.add(2);
+        list.add(3);
         list.print();
         System.out.println();
 

@@ -11,7 +11,7 @@ public class MyLinkedList<T> implements List<T> {
     Node<T> first;
     Node<T> last;
 
-    public void addFirst(T data) {
+    private void addFirst(T data) {
         Node<T> element = new Node<>(data);
         element.next = first;
         first = element;
@@ -21,7 +21,7 @@ public class MyLinkedList<T> implements List<T> {
         size++;
     }
 
-    public void addLast(T data) {
+    private void addLast(T data) {
         if (size == 0) {
             addFirst(data);
             return;
