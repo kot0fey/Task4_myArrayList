@@ -182,30 +182,18 @@ public class MyLinkedList<T> implements List<T> {
             addLast(element);
             return;
         }
-        addFirst(element);
-        Node<T> newElement = first;
-        Node<T> nextElement = newElement.next;
-        Node<T> prevElement = null;
 
-
-        newElement.next = newElement.next.next;//For first iteration
-        nextElement.next = newElement;
-        first = nextElement;
-        nextElement = newElement.next;
-        prevElement = first;
-
-        for (int i = 0; i < index - 1; i++) {
-            if (newElement.next.next == last) {
-                newElement.next = null;
+        var tempNode = first;
+        for (int i = 0; i < index; i++) {
+            if (i == index - 1) {
+                var temp = tempNode.next;
+                tempNode.next = new Node<>(element);
+                tempNode.next.next = temp;
             } else {
-                newElement.next = newElement.next.next;
+                tempNode = tempNode.next;
             }
-            nextElement.next = newElement;
-            prevElement.next = nextElement;
-
-            nextElement = newElement.next;
-            prevElement = prevElement.next;
         }
+        size++;
     }
 
     @Override
