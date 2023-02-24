@@ -83,7 +83,7 @@ public class MyLinkedListTest {
 
 
         System.out.println("isEmpty():" + list.isEmpty());
-        System.out.println("list.clear();");
+        System.out.println("clear()");
         list.clear();
         list.print();
         System.out.println("isEmpty():" + list.isEmpty());
