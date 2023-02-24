@@ -150,9 +150,7 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public void clear() {
-        for (int i = 0; i < size + 1; i++) {
-            remove(0);
-        }
+        first = last = null;
     }
 
     @Override
