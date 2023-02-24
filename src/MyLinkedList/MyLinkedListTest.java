@@ -3,12 +3,18 @@ package MyLinkedList;
 public class MyLinkedListTest {
     public static void start() {
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
-
+        int counter = 0;
         System.out.println("Adding elements:\nlist.add(1);\nlist.add(2);\nlist.add(3);\n");
         list.add(1);
         list.add(2);
         list.add(3);
-        list.print();
+
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
+
         System.out.println();
 
         System.out.println("size(): " + list.size());
@@ -46,7 +52,11 @@ public class MyLinkedListTest {
 
         System.out.println("addAll(2, 3, 5):");
         list.addAll(checkingList);
-        list.print();
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
         System.out.println();
 
 
@@ -55,37 +65,61 @@ public class MyLinkedListTest {
 
 
         System.out.println("list.set(4, 7): " + list.set(4, 7));
-        list.print();
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
         System.out.println();
 
 
         list.add(3, 6);
-        list.print();
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
         System.out.println();
 
 
         System.out.println("remove(index: 1):");
         list.remove(1);
-        list.print();
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
         System.out.println();
 
 
         System.out.println("remove(Object: 2):");
         list.remove((Object) 2);
-        list.print();
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
         System.out.println();
 
 
         System.out.println("removeAll(2, 3, 5):");
         list.removeAll(checkingList);
-        list.print();
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
         System.out.println();
 
 
         System.out.println("isEmpty():" + list.isEmpty());
         System.out.println("clear()");
         list.clear();
-        list.print();
+        counter = 0;
+        for(Object o : list){
+            System.out.println("\t" + counter + ") " + o);
+            counter++;
+        }
         System.out.println("isEmpty():" + list.isEmpty());
         System.out.println();
     }

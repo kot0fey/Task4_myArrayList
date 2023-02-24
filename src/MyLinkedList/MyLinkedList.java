@@ -262,13 +262,4 @@ public class MyLinkedList<T> implements List<T> {
     public List<T> subList(int fromIndex, int toIndex) {///////////////////////////////////////////////
         return null;
     }
-
-    public void print() {
-        System.out.println("MyLinkedList contains:");
-        Node<T> element = first;
-        for (int i = 0; i < size; i++) {
-            System.out.println("\t" + i + ") " + element.data);
-            element = element.next;
-        }
-    }
 }
