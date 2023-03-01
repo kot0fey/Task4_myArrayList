@@ -112,8 +112,8 @@ public class MyMap<K, V> implements Map {
     public void clear() {
         for (int i = 0; i < DEFAULT_CAPACITY; i++) {
             table[i] = null;
-            size=0;
         }
+        size=0;
     }
 
     @Override
