@@ -1,9 +1,5 @@
 package MyHashSet;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
 public class Node<T> {
     private final int hash;
     private final T data;
@@ -63,31 +59,5 @@ public class Node<T> {
     public void setNext(Object data) {
         next = new Node<T>(data);
     }
-
-
-
-   /* public boolean find(Object data) {
-        if (this.data == data) {
-            return true;
-        }
-        if (next != null) {
-            return next.find(data);
-        }
-        return false;
-    }
-
-
-
-/*
-    public Set dataSet() {
-        Set<T> set = new MyHashSet<>();
-        set.add(data);
-        if (next != null) {
-            set.addAll((Collection<? extends T>) next.data);
-        }
-        return set;
-    }
-
- */
 }
 
