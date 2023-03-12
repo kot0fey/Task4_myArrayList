@@ -23,7 +23,7 @@ public class MyMap<K, V> implements Map {
 
     @Override
     public boolean containsKey(Object key) {
-        int hash = key.hashCode() % DEFAULT_CAPACITY;
+        int hash = Math.abs(key.hashCode()) % DEFAULT_CAPACITY;
         if (table[hash] != null) {
             return table[hash].find(key) != null;
         }
@@ -44,7 +44,7 @@ public class MyMap<K, V> implements Map {
 
     @Override
     public Object get(Object key) {
-        int hash = key.hashCode() % DEFAULT_CAPACITY;
+        int hash = Math.abs(key.hashCode()) % DEFAULT_CAPACITY;
         if (table[hash] != null) {
             if (table[hash].find(key) != null) {
                 return (Object) table[hash].find(key).getValue();
@@ -56,7 +56,7 @@ public class MyMap<K, V> implements Map {
     @Override
     public Object put(Object key, Object value) {
         if (containsKey(key)) {
-            int hash = key.hashCode() % DEFAULT_CAPACITY;
+            int hash = Math.abs(key.hashCode()) % DEFAULT_CAPACITY;
             Object prevKey = get(key);
             table[hash].find(key).setValue(value);
             return prevKey;
@@ -81,7 +81,7 @@ public class MyMap<K, V> implements Map {
 
     @Override
     public Object remove(Object key) {
-        int hash = key.hashCode() % DEFAULT_CAPACITY;
+        int hash = Math.abs(key.hashCode()) % DEFAULT_CAPACITY;
         Node<K, V> removingElement = null;
         Node<K, V> firstElement = table[hash];
 
@@ -113,7 +113,7 @@ public class MyMap<K, V> implements Map {
         for (int i = 0; i < DEFAULT_CAPACITY; i++) {
             table[i] = null;
         }
-        size=0;
+        size = 0;
     }
 
     @Override

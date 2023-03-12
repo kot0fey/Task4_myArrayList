@@ -8,7 +8,7 @@ public class Node<T> {
 
 
     public Node(Object data) {
-        hash = data.hashCode() % DEFAULT_CAPACITY;
+        hash = Math.abs(data.hashCode()) % DEFAULT_CAPACITY;
         this.data = (T) data;
     }
 
@@ -21,7 +21,7 @@ public class Node<T> {
     }
 
     public boolean contains(Object data) {
-        if (this.data == data) {
+        if (this.data.equals(data)) {
             return true;
         }
         if (next != null) {
@@ -40,7 +40,7 @@ public class Node<T> {
 
     public Node findPrev(Object data) {
         if (next != null) {
-            if (next.getData() == data) {
+            if (next.getData().equals(data)) {
                 return this;
             }
             if (next.getNext() != null) {

@@ -24,7 +24,7 @@ public class MyHashSet<T> implements Set {
 
     @Override
     public boolean contains(Object data) {
-        int hash = data.hashCode() % DEFAULT_CAPACITY;
+        int hash = Math.abs(data.hashCode()) % DEFAULT_CAPACITY;
         if (table[hash] != null) {
             return table[hash].contains(data);
         }
@@ -101,7 +101,7 @@ public class MyHashSet<T> implements Set {
             return false;
         }
 
-        int hash = data.hashCode() % DEFAULT_CAPACITY;
+        int hash = Math.abs(data.hashCode()) % DEFAULT_CAPACITY;
         if (table[hash] == null) {
             table[hash] = new Node<T>(data);
         } else {
@@ -117,7 +117,7 @@ public class MyHashSet<T> implements Set {
         if (!contains(data)) {
             return false;
         }
-        int hash = data.hashCode() % DEFAULT_CAPACITY;
+        int hash = Math.abs(data.hashCode()) % DEFAULT_CAPACITY;
 
         if (table[hash].findPrev(data) != null) {
             table[hash].findPrev(data).setNext(table[hash].findPrev(data).getNext().getNext());

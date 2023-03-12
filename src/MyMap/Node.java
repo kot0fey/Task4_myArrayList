@@ -12,7 +12,7 @@ public class Node<K, V> {
 
 
     public Node(K key, V value) {
-        hash = key.hashCode() % DEFAULT_CAPACITY;
+        hash = Math.abs(key.hashCode()) % DEFAULT_CAPACITY;
         this.key = key;
         this.value = value;
     }
@@ -35,7 +35,7 @@ public class Node<K, V> {
 
     public void setLast(Node element) {
         if (next != null) {
-            if (key != next.getKey()) {
+            if (!key.equals(next.getKey())) {
                 next.setLast(element);
             }
         } else {
@@ -48,7 +48,7 @@ public class Node<K, V> {
     }
 
     public Node find(Object key) {
-        if (this.key == key) {
+        if (this.key.equals(key)) {
             return this;
         }
         if (next != null) {
@@ -59,7 +59,7 @@ public class Node<K, V> {
 
     public Node findPrev(Object key) {
         if (next != null) {
-            if (next.getKey() == key) {
+            if (next.getKey().equals(key)) {
                 return this;
             }
             if (next.getNext() != null) {
@@ -71,7 +71,7 @@ public class Node<K, V> {
 
 
     public boolean containsValue(Object value) {
-        if (this.value == value) {
+        if (this.value.equals(value)) {
             return true;
         }
         if (next != null) {
